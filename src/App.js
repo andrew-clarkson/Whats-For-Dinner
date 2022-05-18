@@ -3,6 +3,7 @@ import Form from './Components/Form';
 import Suggestions from './Components/Suggestions';
 import AddedIngredients from './Components/AddedIngredients';
 import Recipes from './Components/Recipes';
+import Footer from './Components/Footer';
 import './App.css';
 
 function App() {
@@ -33,17 +34,19 @@ function App() {
   };
 
   const search = () => {
-    const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${
-      process.env.REACT_APP_API
-    }&ingredients=${selectedIngredients.toString()}&ranking=2&ignorePantry=true&number=12`;
+    if (selectedIngredients.length > 0) {
+      const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${
+        process.env.REACT_APP_API
+      }&ingredients=${selectedIngredients.toString()}&ranking=2&ignorePantry=true&number=12`;
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => setRecipes(data));
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => setRecipes(data));
+    }
   };
 
   return (
-    <div className='container text-center'>
+    <div className='container text-center pb-5'>
       <h1 className='mt-5'>What's For Dinner?</h1>
       <div className='border border-2 border-white rounded-3 m-4 p-5'>
         <Form addIngredient={addIngredient} />
@@ -76,6 +79,7 @@ function App() {
       </div>
 
       <Recipes recipes={recipes} />
+      <Footer />
     </div>
   );
 }
