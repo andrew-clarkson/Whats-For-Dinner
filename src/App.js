@@ -58,6 +58,10 @@ function App() {
   return (
     <div className='container text-center pb-5'>
       <h1 className='mt-5'>What's For Dinner?</h1>
+      <p>
+        With Functional Components. See Class-Based Components{' '}
+        <a href='https://moonlit-tiramisu-189bb2.netlify.app/'>Here</a>.
+      </p>
       <div className='border border-2 border-white rounded-3 m-4 p-5'>
         <Form addIngredient={addIngredient} />
         <Suggestions addIngredient={addIngredient} />

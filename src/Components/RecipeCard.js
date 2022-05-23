@@ -1,8 +1,4 @@
-// import { useState } from 'react';
-// import RecipeModal from './RecipeModal';
 const RecipeCard = (props) => {
-  // const [singleRecipeData, setSingleRecipeData] = useState();
-
   const UrlHandler = (data) => {
     const recipeUrl = data.sourceUrl;
     window.open(
