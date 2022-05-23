@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Form from './Components/Form';
 import Suggestions from './Components/Suggestions';
 import AddedIngredients from './Components/AddedIngredients';
@@ -9,6 +9,7 @@ import './App.css';
 function App() {
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   const [recipes, setRecipes] = useState();
+  const [random, setRandom] = useState();
 
   const addIngredient = (ingredient) => {
     if (selectedIngredients.includes(ingredient)) {
@@ -42,8 +43,17 @@ function App() {
       fetch(url)
         .then((response) => response.json())
         .then((data) => setRecipes(data));
+      setRandom(false);
     }
   };
+
+  useEffect(() => {
+    const url = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API}&number=12`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => setRecipes(data.recipes));
+    setRandom(true);
+  }, []);
 
   return (
     <div className='container text-center pb-5'>
@@ -61,7 +71,7 @@ function App() {
               className='btn btn-secondary btn-sm rounded-pill m-1'
               onClick={reset}
             >
-              reset
+              reset ingredients
             </button>
             <p className='mt-2'>click individual ingredients to delete</p>
           </>
@@ -77,8 +87,9 @@ function App() {
           </button>
         </div>
       </div>
+      {random ? <h3>Random Recipes</h3> : <h3>Recipes You Can Make</h3>}
+      {recipes && <Recipes recipes={recipes} />}
 
-      <Recipes recipes={recipes} />
       <Footer />
     </div>
   );
