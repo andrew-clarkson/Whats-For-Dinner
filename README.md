@@ -17,7 +17,7 @@ It took me 10 hours from inception to deployment.
 - Heroku
 - Git and Github
 
-I used the [Spoontacular API](https://spoonacular.com/) which provide 150 free API calls per day.
+I used the [Spoontacular API](https://spoonacular.com/) which provides 150 free API calls per day.
 
 ## Features
 
