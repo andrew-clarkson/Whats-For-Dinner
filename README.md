@@ -26,5 +26,5 @@ Input what you have in your fridge/pantry/cold cellar, and it will return a doze
 ## Lessons Learned During Development
 
 - Working under a time crunch - it's better make things work now, then make the pretty later
-- Simple is better -> this project has very few dependancies
+- Simple is better -> this project has very few dependencies
 - It's amazing what you can accomplish when you focus
