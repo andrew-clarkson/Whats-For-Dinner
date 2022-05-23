@@ -88,7 +88,7 @@ function App() {
         </div>
       </div>
       {random ? <h3>Random Recipes</h3> : <h3>Recipes You Can Make</h3>}
-      {recipes && <Recipes recipes={recipes} />}
+      <Recipes recipes={recipes} />
 
       <Footer />
     </div>
